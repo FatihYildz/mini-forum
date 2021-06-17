@@ -1,4 +1,4 @@
-export function createNavbar(loggedIn) {
+export function createNavbar(activePage, loggedIn = false) {
     const navbar = document.createElement('nav');
 
     const homeLink = document.createElement('div');
@@ -11,6 +11,23 @@ export function createNavbar(loggedIn) {
     registerLink.textContent = 'Créer un compte';
     const loginLink = document.createElement('div');
     loginLink.textContent = 'Se connecter';
+
+    switch (activePage) {
+        case 'home':
+            homeLink.classList.add('active');
+            break;
+        case 'update':
+            updateAccountLink.classList.add('active');
+            break;
+        case 'register':
+            registerLink.classList.add('active');
+            break;
+        case 'login':
+            loginLink.classList.add('active');
+            break;
+        default:
+            break;
+    }
 
     navbar.appendChild(homeLink);
     if (loggedIn) {
