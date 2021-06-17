@@ -1,4 +1,4 @@
-export function loginFormDisplay() {
+export function createRegisterDisplay() {
     const form = document.createElement('form');
 
     const usernameDiv = document.createElement('div');
