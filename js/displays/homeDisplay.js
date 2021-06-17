@@ -10,12 +10,25 @@ export function createHomeDisplay(topicList) {
 function createTopicForm() {
     const topicForm = document.createElement('form');
     topicForm.id = "topic-form";
+    const titleDiv = document.createElement('div');
+    const messageDiv = document.createElement('div');
+
+    const topicFormTitleLabel = document.createElement('label');
+    topicFormTitleLabel.setAttribute('for', 'topic-title-ipt');
+    topicFormTitleLabel.textContent = 'Titre';
 
     const topicFormTitleInput = document.createElement('input');
     topicFormTitleInput.type = 'text';
     topicFormTitleInput.name = 'topic-title';
     topicFormTitleInput.id = 'topic-title-ipt';
-    topicFormTitleInput.placeholder = "Title";
+    topicFormTitleInput.placeholder = "Titre";
+
+    titleDiv.appendChild(topicFormTitleLabel);
+    titleDiv.appendChild(topicFormTitleInput);
+
+    const topicFormMessageLabel = document.createElement('label');
+    topicFormMessageLabel.setAttribute('for', 'topic-message-ipt');
+    topicFormMessageLabel.textContent = 'Message';
 
     const topicFormMessageInput = document.createElement('input');
     topicFormMessageInput.type = 'text';
@@ -23,12 +36,15 @@ function createTopicForm() {
     topicFormMessageInput.id = 'topic-message-ipt';
     topicFormMessageInput.placeholder = "Message";
 
+    messageDiv.appendChild(topicFormMessageLabel);
+    messageDiv.appendChild(topicFormMessageInput);
+
     const topicFormSubmitButton = document.createElement('input');
     topicFormSubmitButton.type = 'submit';
-    topicFormSubmitButton.textContent = 'Ajouter un nouveau sujet';
+    topicFormSubmitButton.value = 'Ajouter un nouveau sujet';
 
-    topicForm.appendChild(topicFormTitleInput);
-    topicForm.appendChild(topicFormMessageInput);
+    topicForm.appendChild(titleDiv);
+    topicForm.appendChild(messageDiv);
     topicForm.appendChild(topicFormSubmitButton);
 
     return topicForm;

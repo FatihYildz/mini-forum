@@ -25,19 +25,18 @@ export function createTopicDisplay() {
     topicDescription.innerHTML = `Posté le ${topic.date} à ${topic.hour} par ${topic.author}`;
     topicDisplay.appendChild(topicDescription);
 
-    const topicContainer = document.createElement('div');
-
     const refreshButton = document.createElement('button');
     refreshButton.innerHTML = "Actualiser les messages";
     topicDisplay.appendChild(refreshButton);
 
-    // Use a list of messages
+    const topicContainer = document.createElement('div');
+
     topic.messages.forEach((message) => {
         const messageElement = createMessageElement(message);
         topicContainer.appendChild(messageElement);
     });
 
-    const messageForm = creationMessageForm();
+    const messageForm = createMessageForm();
     topicContainer.appendChild(messageForm);
     topicDisplay.appendChild(topicContainer);
 
@@ -46,10 +45,13 @@ export function createTopicDisplay() {
 };
 
 function createMessageElement(message) {
+
     const messageElement = document.createElement('div');
+
     const messageHeading = document.createElement('h3');
     messageHeading.innerHTML = `Posté le ${message.date} à ${message.hour} par ${message.author}`;
     messageElement.appendChild(messageHeading);
+
     const messageText = document.createElement('div');
     messageText.innerHTML = `${message.text}`;
     messageElement.appendChild(messageText);
@@ -57,13 +59,14 @@ function createMessageElement(message) {
     return messageElement;
 };
 
-function creationMessageForm() {
+function createMessageForm() {
 
     const messageForm = document.createElement("form");
-    messageForm.id = "messageForm";
+    messageForm.id = "message-form";
 
     const inputMessageText = document.createElement('input');
     inputMessageText.type = "text";
+    inputMessageText.placeholder = "Message";
 
     const submitButton = document.createElement('input');
     submitButton.type = "submit";
