@@ -1,8 +1,13 @@
-export function createHomeDisplay(topicList = []) {
+import { Topic } from '../models/topic.js';
+import { Topic } from '../index.js';
+
+export function createHomeDisplay() {
     const homeDisplay = document.createElement('div');
 
     homeDisplay.appendChild(createTopicForm());
-    homeDisplay.appendChild(createTopicList(topicList));
+    Topic.getTopics().then(topics => {
+        homeDisplay.appendChild(createTopicList(topics));
+    });
 
     return homeDisplay;
 }
@@ -47,10 +52,21 @@ function createTopicForm() {
     topicForm.appendChild(messageDiv);
     topicForm.appendChild(topicFormSubmitButton);
 
+    topicForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const localStorageUser = JSON.parse(localStorage.getItem('user'));
+        const topicCreationDate = new Date();
+        const newTopic = new Topic(topicFormTitleInput.value, topicCreationDate, localStorageUser, topicFormMessageInput.value);
+
+        Topic.createTopic(newTopic);
+    });
+
     return topicForm;
 }
 
 function createTopicList(topicList) {
+
+
     const topicListContainer = document.createElement('div');
     topicListContainer.id = 'topic-list-container';
 
@@ -63,7 +79,6 @@ function createTopicList(topicList) {
     const topicFilteredList = document.createElement('div');
     topicFilteredList.id = 'topic-filtered-list';
 
-    // Use a list of topic named topicList here
     topicList.forEach((topic, index) => {
         const topicLine = createTopicLine(topic);
         topicLine.id = `topic-${index}`;
@@ -93,7 +108,7 @@ function createTopicLine(topic) {
     const updateTopicButton = document.createElement('button');
     updateTopicButton.textContent = 'Modifier';
     const saveChangesButton = document.createElement('button');
-    updateTopicButton.textContent = 'Sauvegarder';
+    saveChangesButton.textContent = 'Sauvegarder';
     const deleteTopicButton = document.createElement('button');
     deleteTopicButton.textContent = 'Supprimer';
 
@@ -102,6 +117,17 @@ function createTopicLine(topic) {
     topicLine.appendChild(updateTopicButton);
     topicLine.appendChild(saveChangesButton);
     topicLine.appendChild(deleteTopicButton);
+
+    saveChangesButton.addEventListener('click', (event) => {
+        changeTopic(topic.id, topicTitleUpdateInput.value);
+        displayPage('home');
+    });
+
+    deleteTopicButton.addEventListener('click', (event) => {
+        deleteTopic(topic.id);
+        displayPage('home');
+    });
+
 
     return topicLine;
 }
