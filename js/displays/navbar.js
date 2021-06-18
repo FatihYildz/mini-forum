@@ -1,42 +1,43 @@
+const links = [
+    {
+        title: 'Accueil',
+        private: false,
+        route: 'home'
+    },
+    {
+        title: 'Modifier mon compte',
+        private: true,
+        route: 'update'
+    },
+    {
+        title: 'Se déconnecter',
+        private: true,
+        route: ''
+    },
+    {
+        title: 'Créer un compte',
+        private: false,
+        route: 'register'
+    },
+    {
+        title: 'Se connecter',
+        private: false,
+        route: 'login'
+    }];
+
 export function createNavbar(activePage, loggedIn = false) {
     const navbar = document.createElement('nav');
 
-    const homeLink = document.createElement('div');
-    homeLink.textContent = 'Accueil';
-    const updateAccountLink = document.createElement('div');
-    updateAccountLink.textContent = 'Modifier mon compte';
-    const logoutLink = document.createElement('div');
-    logoutLink.textContent = 'Se déconnecter';
-    const registerLink = document.createElement('div');
-    registerLink.textContent = 'Créer un compte';
-    const loginLink = document.createElement('div');
-    loginLink.textContent = 'Se connecter';
-
-    switch (activePage) {
-        case 'home':
-            homeLink.classList.add('active');
-            break;
-        case 'update':
-            updateAccountLink.classList.add('active');
-            break;
-        case 'register':
-            registerLink.classList.add('active');
-            break;
-        case 'login':
-            loginLink.classList.add('active');
-            break;
-        default:
-            break;
-    }
-
-    navbar.appendChild(homeLink);
-    if (loggedIn) {
-        navbar.appendChild(updateAccountLink);
-        navbar.appendChild(logoutLink);
-    } else {
-        navbar.appendChild(registerLink);
-        navbar.appendChild(loginLink);
-    }
+    links
+        .filter(link => link.private === loggedIn || link.route === 'home')
+        .forEach(link => {
+            const linkElement = document.createElement('div');
+            linkElement.textContent = link.title;
+            if (link.route === activePage) {
+                linkElement.classList.add('active');
+            }
+            navbar.appendChild(linkElement);
+        });
 
     return navbar;
 }
