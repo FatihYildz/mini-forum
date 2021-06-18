@@ -1,8 +1,12 @@
-export function createHomeDisplay(topicList = []) {
+import { Topic } from '../models/topic.js';
+
+export function createHomeDisplay() {
     const homeDisplay = document.createElement('div');
 
     homeDisplay.appendChild(createTopicForm());
-    homeDisplay.appendChild(createTopicList(topicList));
+    Topic.getTopics().then(topics => {
+        homeDisplay.appendChild(createTopicList(topics));
+    });
 
     return homeDisplay;
 }
@@ -51,6 +55,8 @@ function createTopicForm() {
 }
 
 function createTopicList(topicList) {
+
+
     const topicListContainer = document.createElement('div');
     topicListContainer.id = 'topic-list-container';
 
