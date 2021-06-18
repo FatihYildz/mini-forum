@@ -7,10 +7,10 @@ export function createTopicDisplay() {
         title: 'titre',
         author: 'auteur',
         messages: [
-            { author: "xxx", date: "27/02", hour: "16h00", text: "fdsfsdfdsfsdf" },
-            { author: "xxx", date: "27/02", hour: "16h00", text: "fdsfsdfdsfsdf" },
-            { author: "xxx", date: "27/02", hour: "16h00", text: "fdsfsdfdsfsdf" },
-            { author: "xxx", date: "27/02", hour: "16h00", text: "fdsfsdfdsfsdf" }
+            { author: 'xxx', date: '27/02', hour: '16h00', text: 'fdsfsdfdsfsdf' },
+            { author: 'xxx', date: '27/02', hour: '16h00', text: 'fdsfsdfdsfsdf' },
+            { author: 'xxx', date: '27/02', hour: '16h00', text: 'fdsfsdfdsfsdf' },
+            { author: 'xxx', date: '27/02', hour: '16h00', text: 'fdsfsdfdsfsdf' }
         ],
         date: '17/06/2021',
         hour: '15h30'
@@ -26,7 +26,7 @@ export function createTopicDisplay() {
     topicDisplay.appendChild(topicDescription);
 
     const refreshButton = document.createElement('button');
-    refreshButton.innerHTML = "Actualiser les messages";
+    refreshButton.innerHTML = 'Actualiser les messages';
     topicDisplay.appendChild(refreshButton);
 
     const topicContainer = document.createElement('div');
@@ -61,16 +61,16 @@ function createMessageElement(message) {
 
 function createMessageForm() {
 
-    const messageForm = document.createElement("form");
-    messageForm.id = "message-form";
+    const messageForm = document.createElement('form');
+    messageForm.id = 'message-form';
 
     const inputMessageText = document.createElement('input');
-    inputMessageText.type = "text";
-    inputMessageText.placeholder = "Message";
+    inputMessageText.type = 'text';
+    inputMessageText.placeholder = 'Message';
 
     const submitButton = document.createElement('input');
-    submitButton.type = "submit";
-    submitButton.value = "Répondre au sujet";
+    submitButton.type = 'submit';
+    submitButton.value = 'Répondre au sujet';
 
     messageForm.appendChild(inputMessageText);
     messageForm.appendChild(submitButton);

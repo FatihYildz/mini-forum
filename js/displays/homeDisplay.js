@@ -9,7 +9,7 @@ export function createHomeDisplay(topicList) {
 
 function createTopicForm() {
     const topicForm = document.createElement('form');
-    topicForm.id = "topic-form";
+    topicForm.id = 'topic-form';
     const titleDiv = document.createElement('div');
     const messageDiv = document.createElement('div');
 
@@ -21,7 +21,7 @@ function createTopicForm() {
     topicFormTitleInput.type = 'text';
     topicFormTitleInput.name = 'topic-title';
     topicFormTitleInput.id = 'topic-title-ipt';
-    topicFormTitleInput.placeholder = "Titre";
+    topicFormTitleInput.placeholder = 'Titre';
 
     titleDiv.appendChild(topicFormTitleLabel);
     titleDiv.appendChild(topicFormTitleInput);
@@ -34,7 +34,7 @@ function createTopicForm() {
     topicFormMessageInput.type = 'text';
     topicFormMessageInput.name = 'topic-message';
     topicFormMessageInput.id = 'topic-message-ipt';
-    topicFormMessageInput.placeholder = "Message";
+    topicFormMessageInput.placeholder = 'Message';
 
     messageDiv.appendChild(topicFormMessageLabel);
     messageDiv.appendChild(topicFormMessageInput);
@@ -58,7 +58,7 @@ function createTopicList(topicList) {
     topicListFilterInput.type = 'text';
     topicListFilterInput.name = 'topic-filter';
     topicListFilterInput.id = 'topic-filter-ipt';
-    topicListFilterInput.placeholder = "Filtrer par titre ou par auteur";
+    topicListFilterInput.placeholder = 'Filtrer par titre ou par auteur';
 
     const topicFilteredList = document.createElement('div');
     topicFilteredList.id = 'topic-filtered-list';
@@ -86,7 +86,7 @@ function createTopicLine(topic) {
     topicTitleUpdateInput.type = 'text';
     topicTitleUpdateInput.name = 'update-topic-title';
     topicTitleUpdateInput.id = 'update-topic-title-ipt';
-    topicTitleUpdateInput.placeholder = "Title";
+    topicTitleUpdateInput.placeholder = 'Title';
     topicTitleUpdateInput.value = topic.title;
     topicTitleUpdateInput.hidden = true;
 

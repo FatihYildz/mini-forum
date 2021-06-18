@@ -1,6 +1,6 @@
 export function createUpdateUserDisplay() {
     const updateUserForm = document.createElement('form');
-    updateUserForm.id = "update-user-form";
+    updateUserForm.id = 'update-user-form';
 
     const usernameDiv = document.createElement('div');
     const newPasswordDiv = document.createElement('div');
@@ -16,7 +16,7 @@ export function createUpdateUserDisplay() {
     usernameInput.type = 'text';
     usernameInput.name = 'username';
     usernameInput.id = 'username-ipt';
-    usernameInput.placeholder = "Modifier le nom d'utilisateur";
+    usernameInput.placeholder = 'Modifier le nom d'utilisateur';
 
     usernameDiv.appendChild(usernameLabel);
     usernameDiv.appendChild(usernameInput);
@@ -30,7 +30,7 @@ export function createUpdateUserDisplay() {
     newPasswordInput.type = 'password';
     newPasswordInput.name = 'new-password';
     newPasswordInput.id = 'new-password-ipt';
-    newPasswordInput.placeholder = "Modifier le mot de passe";
+    newPasswordInput.placeholder = 'Modifier le mot de passe';
 
     newPasswordDiv.appendChild(newPasswordLabel);
     newPasswordDiv.appendChild(newPasswordInput);
@@ -44,7 +44,7 @@ export function createUpdateUserDisplay() {
     newPasswordConfirmInput.type = 'password';
     newPasswordConfirmInput.name = 'new-password-confirm';
     newPasswordConfirmInput.id = 'new-password-confirm-ipt';
-    newPasswordConfirmInput.placeholder = "Confirmer le nouveau mot de passe";
+    newPasswordConfirmInput.placeholder = 'Confirmer le nouveau mot de passe';
 
     newPasswordConfirmDiv.appendChild(newPasswordConfirmLabel);
     newPasswordConfirmDiv.appendChild(newPasswordConfirmInput);
@@ -58,7 +58,7 @@ export function createUpdateUserDisplay() {
     oldPasswordInput.type = 'password';
     oldPasswordInput.name = 'old-password';
     oldPasswordInput.id = 'old-password-ipt';
-    oldPasswordInput.placeholder = "Entrer le mot de passe actuel";
+    oldPasswordInput.placeholder = 'Entrer le mot de passe actuel';
 
     oldPasswordDiv.appendChild(oldPasswordLabel);
     oldPasswordDiv.appendChild(oldPasswordInput);
