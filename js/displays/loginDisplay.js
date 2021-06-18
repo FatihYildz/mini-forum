@@ -1,4 +1,5 @@
 import { User } from '../models/user.js';
+import { displayPage } from '../index.js';
 
 export function createLoginDisplay() {
     const form = document.createElement('form');
@@ -42,7 +43,10 @@ export function createLoginDisplay() {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         const user = new User(usernameInput.value, passwordInput.value);
-        User.login(user);
+        User.login(user).then(user => {
+            localStorage.setItem('user', JSON.stringify(user));
+            displayPage('home');
+        });
     });
 
     return form;

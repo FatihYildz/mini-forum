@@ -14,7 +14,7 @@ export class User {
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({ username: user.username, password: user.password }));
 
-        new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             xhr.onload = () => (xhr.status !== 200) ? reject() : resolve(JSON.parse(xhr.response));
         }).then(user => {
             return user;
@@ -29,10 +29,9 @@ export class User {
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({ username: user.username, password: user.password, passwordConfirm: user.password }));
 
-        new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             xhr.onload = () => (xhr.status !== 200) ? reject() : resolve(JSON.parse(xhr.response));
         }).then(user => {
-            console.log(user);
             return user;
         }).catch((error) => {
             console.log('Error', error);

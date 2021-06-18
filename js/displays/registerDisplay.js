@@ -1,4 +1,5 @@
 import { User } from '../models/user.js';
+import { displayPage } from '../index.js';
 
 export function createRegisterDisplay() {
     const form = document.createElement('form');
@@ -61,7 +62,10 @@ export function createRegisterDisplay() {
         event.preventDefault();
         const newUser = new User(usernameInput.value, passwordInput.value);
         //check if the confirmed password is equal to password
-        User.createUser(newUser);
+        User.createUser(newUser).then(user => {
+            localStorage.setItem('user', JSON.stringify(user));
+            displayPage('home');
+        });
     });
 
     return form;
