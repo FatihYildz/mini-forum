@@ -26,4 +26,20 @@ export class Topic {
         }).then(topic => topic).catch(error => console.log(error));
         return result;
     }
+
+    static createTopic(topic) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:8080/api/topic', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({ title: `${topic.title}`, date: `${topic.date}`, user: `${topic.author}`, content: `${topic.content}` }));
+
+        new Promise((resolve, reject) => {
+            xhr.onload = () => (xhr.status !== 200) ? reject() : resolve(JSON.parse(xhr.response));
+        }).then(topic => {
+            console.log(topic);
+            return topic;
+        }).catch((error) => {
+            console.log('Error', error);
+        });
+    };
 };
