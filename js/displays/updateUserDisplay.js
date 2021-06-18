@@ -16,7 +16,7 @@ export function createUpdateUserDisplay() {
     usernameInput.type = 'text';
     usernameInput.name = 'username';
     usernameInput.id = 'username-ipt';
-    usernameInput.placeholder = 'Modifier le nom d'utilisateur';
+    usernameInput.placeholder = 'Modifier le nom d\'utilisateur';
 
     usernameDiv.appendChild(usernameLabel);
     usernameDiv.appendChild(usernameInput);

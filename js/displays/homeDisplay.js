@@ -1,4 +1,4 @@
-export function createHomeDisplay(topicList) {
+export function createHomeDisplay(topicList = []) {
     const homeDisplay = document.createElement('div');
 
     homeDisplay.appendChild(createTopicForm());
