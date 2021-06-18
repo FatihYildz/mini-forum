@@ -1,3 +1,5 @@
+import { Topic } from '../models/topic.js';
+
 export function createHomeDisplay(topicList = []) {
     const homeDisplay = document.createElement('div');
 
@@ -46,6 +48,14 @@ function createTopicForm() {
     topicForm.appendChild(titleDiv);
     topicForm.appendChild(messageDiv);
     topicForm.appendChild(topicFormSubmitButton);
+
+    topicForm.addEventListener('submit', (event) => {
+        const localStorageUser = JSON.parse(localStorage.getItem('user'));
+        const topicCreationDate = new Date();
+        const newTopic = new Topic(topicFormTitleInput.value, topicCreationDate, localStorageUser, topicFormMessageInput.value);
+
+        Topic.createTopic(newTopic);
+    });
 
     return topicForm;
 }

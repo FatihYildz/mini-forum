@@ -1,3 +1,5 @@
+import { Message } from '../models/message.js';
+
 export function createTopicDisplay() {
     const topicDisplay = document.createElement('div');
 
@@ -75,5 +77,13 @@ function createMessageForm() {
     messageForm.appendChild(inputMessageText);
     messageForm.appendChild(submitButton);
 
-    return messageForm;
+    messageForm.addEventListener('submit', (event) => {
+        const localStorageUser = JSON.parse(localStorage.getItem('user'));
+        const messageCreationDate = new Date();
+        const newMessage = new Message(inputMessageText.value, messageCreationDate, localStorageUser, topic);
+
+        Message.createMessage(newMessage);
+
+        return messageForm;
+    });
 };
