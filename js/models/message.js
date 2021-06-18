@@ -1,6 +1,8 @@
 export class Message {
-    constructor(id, content, date, topic, author) {
-        this.id = id;
+
+    id;
+
+    constructor(content, date, topic, author) {
         this.content = content;
         this.date = date;
         this.topic = topic;

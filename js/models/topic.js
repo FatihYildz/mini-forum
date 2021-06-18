@@ -1,6 +1,8 @@
 export class Topic {
-    constructor(id, title, date, author, messages) {
-        this.id = id;
+
+    id;
+
+    constructor(title, date, author, messages) {
         this.title = title;
         this.date = date;
         this.author = author;

@@ -58,7 +58,8 @@ export function createRegisterDisplay() {
     form.appendChild(submit);
 
     form.addEventListener('submit', (event) => {
-        const newUser = new User(null, usernameInput.value, passwordInput.value, null);
+        event.preventDefault();
+        const newUser = new User(usernameInput.value, passwordInput.value);
         //check if the confirmed password is equal to password
         User.createUser(newUser);
     });

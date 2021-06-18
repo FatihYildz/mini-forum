@@ -40,7 +40,8 @@ export function createLoginDisplay() {
     form.appendChild(submit);
 
     form.addEventListener('submit', (event) => {
-        const user = new User(null, usernameInput.value, passwordInput.value, null);
+        event.preventDefault();
+        const user = new User(usernameInput.value, passwordInput.value);
         User.login(user);
     });
 

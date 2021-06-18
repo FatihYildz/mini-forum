@@ -1,10 +1,11 @@
 export class User {
 
-    constructor(id, username, password, admin) {
-        this.id = id;
+    id;
+    admin;
+
+    constructor(username, password) {
         this.username = username;
         this.password = password;
-        this.admin = admin;
     }
 
     static login(user) {
