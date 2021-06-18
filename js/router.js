@@ -48,7 +48,6 @@ export function navbarRouter(event) {
 
 export function router(route) {
     if (route === 'logout') {
-        // Disconnect user here
         return links.find(link => link.route === 'login').page();
     }
     return links.find(link => link.route === route).page();
