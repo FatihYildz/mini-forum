@@ -1,3 +1,5 @@
+import { User } from '../models/user.js';
+
 export function createRegisterDisplay() {
     const form = document.createElement('form');
 
@@ -54,6 +56,12 @@ export function createRegisterDisplay() {
     form.appendChild(passwordDiv);
     form.appendChild(confirmPasswordDiv);
     form.appendChild(submit);
+
+    form.addEventListener('submit', (event) => {
+        const newUser = new User(null, usernameInput.value, passwordInput.value, null);
+        //check if the confirmed password is equal to password
+        User.createUser(newUser);
+    });
 
     return form;
 }

@@ -51,6 +51,15 @@ function createTopicForm() {
     topicForm.appendChild(messageDiv);
     topicForm.appendChild(topicFormSubmitButton);
 
+    topicForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const localStorageUser = JSON.parse(localStorage.getItem('user'));
+        const topicCreationDate = new Date();
+        const newTopic = new Topic(topicFormTitleInput.value, topicCreationDate, localStorageUser, topicFormMessageInput.value);
+
+        Topic.createTopic(newTopic);
+    });
+
     return topicForm;
 }
 
@@ -69,7 +78,6 @@ function createTopicList(topicList) {
     const topicFilteredList = document.createElement('div');
     topicFilteredList.id = 'topic-filtered-list';
 
-    // Use a list of topic named topicList here
     topicList.forEach((topic, index) => {
         const topicLine = createTopicLine(topic);
         topicLine.id = `topic-${index}`;

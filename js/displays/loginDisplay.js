@@ -1,3 +1,5 @@
+import { User } from '../models/user.js';
+
 export function createLoginDisplay() {
     const form = document.createElement('form');
     const usernameDiv = document.createElement('div');
@@ -36,6 +38,11 @@ export function createLoginDisplay() {
     form.appendChild(usernameDiv);
     form.appendChild(passwordDiv);
     form.appendChild(submit);
+
+    form.addEventListener('submit', (event) => {
+        const user = new User(null, usernameInput.value, passwordInput.value, null);
+        User.login(user);
+    });
 
     return form;
 }

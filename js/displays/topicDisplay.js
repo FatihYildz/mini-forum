@@ -1,10 +1,11 @@
 import { Topic } from '../models/topic.js';
+import { Message } from '../models/message.js';
 
 export function createTopicDisplay() {
     const topicDisplay = document.createElement('div');
 
     const topicId = localStorage.getItem('topicId');
-    Topic.getTopic(topic).then(topic => {
+    Topic.getTopic(topicId).then(topic => {
 
         const topicTitle = document.createElement('h2');
         topicTitle.innerHTML = `Titre du sujet ${topic.title}`;
@@ -25,7 +26,7 @@ export function createTopicDisplay() {
             topicContainer.appendChild(messageElement);
         });
 
-        const messageForm = createMessageForm();
+        const messageForm = createMessageForm(topic);
         topicContainer.appendChild(messageForm);
         topicDisplay.appendChild(topicContainer);
 
@@ -50,7 +51,7 @@ function createMessageElement(message) {
     return messageElement;
 };
 
-function createMessageForm() {
+function createMessageForm(topic) {
 
     const messageForm = document.createElement('form');
     messageForm.id = 'message-form';
@@ -65,6 +66,15 @@ function createMessageForm() {
 
     messageForm.appendChild(inputMessageText);
     messageForm.appendChild(submitButton);
+
+    messageForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const localStorageUser = JSON.parse(localStorage.getItem('user'));
+        const messageCreationDate = new Date();
+        const newMessage = new Message(inputMessageText.value, messageCreationDate, localStorageUser, topic);
+
+        Message.createMessage(newMessage);
+    });
 
     return messageForm;
 };
