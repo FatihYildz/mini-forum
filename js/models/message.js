@@ -11,7 +11,7 @@ export class Message {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'http://localhost:8080/api/message', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({ content: `${message.content}`, date: `${message.date}`, user: `${message.author}`, topic: `${message.topic}` }));
+        xhr.send(JSON.stringify({ content: message.content, date: message.date, user: message.author, topic: message.topic }));
 
         new Promise((resolve, reject) => {
             xhr.onload = () => (xhr.status !== 200) ? reject() : resolve(JSON.parse(xhr.response));
