@@ -1,4 +1,5 @@
 import { Topic } from '../models/topic.js';
+import { displayPage } from '../index.js';
 
 export function createHomeDisplay() {
     const homeDisplay = document.createElement('div');
@@ -107,7 +108,7 @@ function createTopicLine(topic) {
     const updateTopicButton = document.createElement('button');
     updateTopicButton.textContent = 'Modifier';
     const saveChangesButton = document.createElement('button');
-    updateTopicButton.textContent = 'Sauvegarder';
+    saveChangesButton.textContent = 'Sauvegarder';
     const deleteTopicButton = document.createElement('button');
     deleteTopicButton.textContent = 'Supprimer';
 
@@ -116,6 +117,17 @@ function createTopicLine(topic) {
     topicLine.appendChild(updateTopicButton);
     topicLine.appendChild(saveChangesButton);
     topicLine.appendChild(deleteTopicButton);
+
+    saveChangesButton.addEventListener('click', (event) => {
+        changeTopic(topic.id, topicTitleUpdateInput.value);
+        displayPage('home');
+    });
+
+    deleteTopicButton.addEventListener('click', (event) => {
+        deleteTopic(topic.id);
+        displayPage('home');
+    });
+
 
     return topicLine;
 }

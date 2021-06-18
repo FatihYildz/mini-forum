@@ -45,6 +45,22 @@ export class Topic {
         });
     };
 
+    static changeTopic(topicId, newTitle) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('PATCH', `http://localhost:8080/api/topic/${topicId}`, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({ title: newTitle }));
+
+        new Promise((resolve, reject) => {
+            xhr.onload = () => (xhr.status !== 200) ? reject() : resolve(JSON.parse(xhr.response));
+        }).then(topic => {
+            console.log(topic);
+            return topic;
+        }).catch((error) => {
+            console.log('Error', error);
+        });
+    };
+
     static deleteTopic(id) {
         const xhr = new XMLHttpRequest();
         xhr.open('DELETE', `http://localhost:8080/api/topic/${id}`, true);
