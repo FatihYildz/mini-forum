@@ -5,7 +5,7 @@ const header = document.querySelector('header');
 const main = document.querySelector('main');
 
 if (isUserConnected()) {
-    displayPage('topic');
+    displayPage('home');
 } else {
     displayPage('login');
 }
